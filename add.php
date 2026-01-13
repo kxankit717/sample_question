@@ -9,6 +9,21 @@ if (isset($_POST['submit'])) {
     $event_name = $_POST['event_name'];
     $registration_fee = $_POST['registration_fee'];
 
+// trim($_post[]); for removing white space
+    
+    if(!ctype_digit($phone) || strlen($phone) != 10 ){
+        echo "Only numbers and must be 10 digit";
+
+        exit;
+
+    }
+    elseif(!ctype_digit($registration_fee) || $registration_fee < 0){
+        echo "Registration fee must be positive number";
+        exit;
+    }
+
+    else{
+
     try{
         $sql = "INSERT INTO registrations (full_name, email, address, phone, event_name, registration_fee) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
@@ -19,7 +34,7 @@ catch(Exception $e){
 }
 
     header("Location: index.php");
-}
+}}
 ?>
 
 <!DOCTYPE html>

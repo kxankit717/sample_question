@@ -52,6 +52,7 @@ $registrations = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <th>Phone</th>
         <th>event_name</th>
         <th>registration_fee</th>
+        <th>registered_at</th>
         <th>Actions</th>
     </tr>
 
@@ -64,6 +65,7 @@ $registrations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <td><?= $student['phone']; ?></td>
             <td><?= $student['event_name']; ?></td>
             <td><?= $student['registration_fee']; ?></td>
+            <td><?= $student['registered_at']; ?></td>
             <td>
                 <a href="edit.php?id=<?= $student['id']; ?>">Edit</a>
                 |
